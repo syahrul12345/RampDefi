@@ -94,4 +94,27 @@ contract("SurveyController", async () => {
     expect(results[1].toString()).to.equal("3");
     expect(results[2].toString()).to.equal("2");
   });
+
+  it("Should be able to create all surveys", async () => {
+    this.surveyData.forEach(async (data) => {
+      await this.SurveyController.createSurvey(data.name, data.choices);
+    });
+
+    const surveyCount = await this.SurveyController.surveyCount();
+    expect(surveyCount.toString()).to.equal(this.surveyData.length.toString());
+    //Check survey names has correct choices
+    for (var i = 0; i < this.surveyData.length; i++) {
+      let res = await this.SurveyController.getSurvey(i + 1);
+      let name = res[0];
+      expect(name).to.equal(this.surveyData[i].name);
+      let choices = res[1];
+      let results = res[2];
+      choices.forEach(async (choice, index) => {
+        expect(this.web3.utils.toUtf8(choice)).to.equal(
+          this.web3.utils.toUtf8(this.surveyData[i].choices[index])
+        );
+        expect(results[index].toString()).to.equal("0");
+      });
+    }
+  });
 });
