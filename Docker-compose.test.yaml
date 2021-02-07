@@ -1,0 +1,18 @@
+version: '3'
+services: 
+  contracts-test:
+    build: 
+      context: .
+      dockerfile: "Dockerfile.contracts"
+    container_name: contracts-test
+    ports: 
+      - "8000:8000"
+    depends_on: 
+      - ganache
+    restart: "on-failure"
+    command: bash -c "truffle test"
+  ganache:
+    container_name: ganache
+    image: "trufflesuite/ganache-cli"
+    ports:
+      - "8545:8545"

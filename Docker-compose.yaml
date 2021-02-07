@@ -1,0 +1,7 @@
+version: '3'
+services: 
+  ramp-website:
+    build: "."
+    container_name: ramp-website
+    ports: 
+      - "8000:8000"
