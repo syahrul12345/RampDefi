@@ -3,4 +3,4 @@ tests:
 build:
 	docker-compose build
 serve:
-	docker-compose up -d
+	docker-compose up -d --build --force-recreate 
