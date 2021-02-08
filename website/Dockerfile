@@ -2,11 +2,11 @@
 FROM golang:alpine as stage1
 
 WORKDIR /app
-COPY ./website/go.mod .
+COPY go.mod .
 RUN go mod download
 
 # Build go binary
-COPY ./website/main.go .
+COPY main.go .
 RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o main .
 
 FROM node:14 as stage2

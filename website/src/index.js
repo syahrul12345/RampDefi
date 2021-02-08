@@ -7,17 +7,24 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 
 import App from "./pages/App";
+import { CssBaseline } from "@material-ui/core";
 
 // Dark theme
 const ThemeifiedApp = () => {
-  // const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
-  const theme = createMuiTheme({
-    palette: {
-      type: "dark",
-    },
-  });
+  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+
+  const theme = React.useMemo(
+    () =>
+      createMuiTheme({
+        palette: {
+          type: prefersDarkMode ? "dark" : "light",
+        },
+      }),
+    [prefersDarkMode]
+  );
   return (
-    <ThemeProvider>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
       <App />
     </ThemeProvider>
   );
