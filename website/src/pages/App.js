@@ -5,28 +5,48 @@ import Dialog from "../components/Dialog/Dialog";
 import SurveyDialog from "../components/SurveyDialog/SurveyDialog";
 import Web3 from "web3";
 import SurveyController from "../contracts/SurveyController.json";
+import detectEthereumProvider from "@metamask/detect-provider";
 
 import "./App.css";
+import Survey from "../components/Survey/Survey";
 
 function App() {
-  const web3 = new Web3();
+  let web3 = new Web3();
+
   const [ethereum, setEthereum] = React.useState(undefined);
   const [surveyContract, setSurveyContract] = React.useState(undefined);
   const [accounts, setAccounts] = React.useState([]);
+  const [surveys, setSurveys] = React.useState([]);
 
   React.useEffect(() => {
-    if (ethereum) {
-      ethereum.request({ method: "eth_accounts" }).then((accounts) => {
-        setAccounts(accounts);
-      });
-      const surveyControllerContract = new web3.eth.Contract(
-        SurveyController.abi,
-        SurveyController.proxyAddress
-      );
-      setSurveyContract(surveyControllerContract);
-    }
+    const getData = async () => {
+      if (ethereum) {
+        const provider = await detectEthereumProvider();
+        web3 = new Web3(provider);
+        ethereum.request({ method: "eth_accounts" }).then((accounts) => {
+          setAccounts(accounts);
+        });
+        const surveyControllerContract = new web3.eth.Contract(
+          SurveyController.abi,
+          SurveyController.proxyAddress
+        );
+        const surveyCount = await surveyControllerContract.methods
+          .surveyCount()
+          .call();
+        const surveys = [];
+        for (var i = 1; i <= surveyCount; i++) {
+          //Call the api
+          const res = await surveyControllerContract.methods
+            .getSurvey(i)
+            .call();
+          surveys.push(res);
+        }
+        setSurveys(surveys);
+        setSurveyContract(surveyControllerContract);
+      }
+    };
+    getData();
   }, [ethereum]);
-
   return (
     <Grid
       container
@@ -62,6 +82,27 @@ function App() {
           />
         </Grid>
       )}
+      <Grid container style={{ paddingTop: "10vh" }} spacing={4}>
+        {surveys.length === 0 ? (
+          <Typography> No surveys have been created yet.</Typography>
+        ) : (
+          <>
+            {surveys.map((survey, id) => {
+              return (
+                <Grid item xs={12}>
+                  <Survey
+                    survey={survey}
+                    id={id}
+                    ethereum={ethereum}
+                    web3={web3}
+                    surveyContract={surveyContract}
+                  />
+                </Grid>
+              );
+            })}
+          </>
+        )}
+      </Grid>
     </Grid>
   );
 }
