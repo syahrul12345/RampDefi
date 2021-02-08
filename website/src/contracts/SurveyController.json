@@ -219,6 +219,6 @@
     "stateMutability": "nonpayable",
     "type": "function"
   }],
-  "proxyAddress": "0x1E71E79F5b390Ae46D281c3ddFF39A61905A769b",
-  "implementationAddress": "0xDB5cbBaFC3b40c7A4876fF70d378Bb42C93188ef"
+  "proxyAddress": "0x4FAf5bF0B5Ec89e2f08B35664693852BBC9A2AD0",
+  "implementationAddress": "0xa76aeb216E9Dea9B8ceb8B2d601959ae671dB3A2"
 }
