@@ -1,7 +1,7 @@
-version: '3'
-services: 
+version: "3"
+services:
   ramp-website:
-    build: "."
+    build: "./website"
     container_name: ramp-website
-    ports: 
+    ports:
       - "8000:8000"

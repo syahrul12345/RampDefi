@@ -12,10 +12,10 @@ RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o main .
 FROM node:14 as stage2
 WORKDIR /app
 
-COPY ./website/package.json .
+COPY package.json .
 RUN yarn install
-COPY ./website/public ./public/
-COPY ./website/src ./src/
+COPY public ./public/
+COPY src ./src/
 RUN yarn build
 
 FROM alpine as stage3

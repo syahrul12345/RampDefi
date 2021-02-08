@@ -1,9 +1,4 @@
-const {
-  privateKey,
-  mainnetRPC,
-  kovanRPC,
-  etherscanAPI,
-} = require("../secrets");
+const { privateKey, mainnetRPC, kovanRPC, etherscanAPI } = require("./secrets");
 const HDWalletProvider = require("truffle-hdwallet-provider");
 module.exports = {
   networks: {

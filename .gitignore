@@ -1,3 +1,4 @@
+truffle/node_modules/**
 website/build/
 node_modules/**
 secrets.js

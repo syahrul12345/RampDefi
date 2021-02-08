@@ -1,5 +1,5 @@
 tests:
-	docker-compose -f Docker-compose.test.yaml up  --build --force-recreate
+	docker-compose -f Docker-compose.test.yaml up  --abort-on-container-exit --build --force-recreate 
 build:
 	docker-compose build
 serve:
