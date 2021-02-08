@@ -1,17 +1,29 @@
 import React from "react";
-import { Box, Grid, Typography } from "@material-ui/core";
+import { Box, Button, Grid, Typography } from "@material-ui/core";
 
 import Dialog from "../components/Dialog/Dialog";
+import SurveyDialog from "../components/SurveyDialog/SurveyDialog";
+import Web3 from "web3";
+import SurveyController from "../contracts/SurveyController.json";
+
 import "./App.css";
 
 function App() {
+  const web3 = new Web3();
   const [ethereum, setEthereum] = React.useState(undefined);
+  const [surveyContract, setSurveyContract] = React.useState(undefined);
   const [accounts, setAccounts] = React.useState([]);
+
   React.useEffect(() => {
     if (ethereum) {
       ethereum.request({ method: "eth_accounts" }).then((accounts) => {
         setAccounts(accounts);
       });
+      const surveyControllerContract = new web3.eth.Contract(
+        SurveyController.abi,
+        SurveyController.proxyAddress
+      );
+      setSurveyContract(surveyControllerContract);
     }
   }, [ethereum]);
 
@@ -38,7 +50,18 @@ function App() {
           </Box>
         </Typography>
       </Grid>
-      {!ethereum ? <Dialog setEthereum={setEthereum} /> : <>{accounts[0]}</>}
+      {!ethereum ? (
+        <Dialog setEthereum={setEthereum} />
+      ) : (
+        <Grid container alignItems="center" justify="space-between">
+          <Typography variant="body1"> Account: {accounts[0]}</Typography>
+          <SurveyDialog
+            ethereum={ethereum}
+            surveyContract={surveyContract}
+            web3={web3}
+          />
+        </Grid>
+      )}
     </Grid>
   );
 }
