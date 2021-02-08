@@ -12,12 +12,15 @@ import { CssBaseline } from "@material-ui/core";
 // Dark theme
 const ThemeifiedApp = () => {
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
-
   const theme = React.useMemo(
     () =>
       createMuiTheme({
         palette: {
           type: prefersDarkMode ? "dark" : "light",
+        },
+        typography: {
+          fontFamily:
+            "Cerebri Sans,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol",
         },
       }),
     [prefersDarkMode]
