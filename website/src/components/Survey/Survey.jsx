@@ -14,15 +14,16 @@ const Survey = (props) => {
   let name = survey[0];
   let choices = survey[1];
   let results = survey[2];
-
-  const datums = [];
-
-  choices.forEach((choice, index) => {
-    datums[index] = {
-      x: web3.utils.toUtf8(choice),
-      y: results[index],
-    };
-  });
+  const [datums, setDatums] = React.useState([]);
+  React.useEffect(() => {
+    choices.forEach((choice, index) => {
+      datums.push({
+        x: web3.utils.toUtf8(choice),
+        y: results[index],
+      });
+    });
+    setDatums(datums);
+  }, [datums]);
 
   const vote = async (optionID) => {
     const encodedABI = await surveyContract.methods
