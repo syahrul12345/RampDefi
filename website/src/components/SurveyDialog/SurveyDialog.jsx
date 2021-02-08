@@ -4,7 +4,13 @@ import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import { Grid, IconButton, TextField, Typography } from "@material-ui/core";
+import {
+  Grid,
+  IconButton,
+  Link,
+  TextField,
+  Typography,
+} from "@material-ui/core";
 import DeleteIcon from "@material-ui/icons/Delete";
 
 export default function SurveyDialog(props) {
@@ -13,6 +19,7 @@ export default function SurveyDialog(props) {
   const [isCreating, setIsCreating] = React.useState(false);
   const [error, setError] = React.useState("");
   const [ethMessage, setEthMessage] = React.useState("");
+  const [txHash, setTxHash] = React.useState("");
   const [survey, setSurvey] = React.useState({
     name: "",
     options: [],
@@ -93,6 +100,8 @@ export default function SurveyDialog(props) {
       name: "",
       options: [],
     });
+    setTxHash(result);
+    setEthMessage(`Survey Created!`);
   };
 
   const surveyCreatedFail = (error) => {
@@ -177,7 +186,15 @@ export default function SurveyDialog(props) {
         ) : (
           <>
             <DialogContent>
-              <Typography> {ethMessage} </Typography>
+              <Typography>
+                {ethMessage}{" "}
+                <Link
+                  href={`https://kovan.etherscan.io/tx/${txHash}`}
+                  target={"_blank"}
+                >
+                  Etherscan
+                </Link>
+              </Typography>
             </DialogContent>
             <Button onClick={handleClose} variant="contained" color="primary">
               OK
