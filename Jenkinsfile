@@ -8,20 +8,23 @@ pipeline {
         }
       }
       stage('Build') { 
-          steps {
-          //   when { tag "release-*" }
-            withEnv(["PATH=$PATH:~/.local/bin"]){
-              sh "make build"
-            }
+        withCredentials([file(credentialsId: 'rampdefi-secret', variable: 'rampdefi-secret')]) {
+            sh "echo \$rampdefi-secret "
           }
+        steps {
+        //   when { tag "release-*" }
+          withEnv(["PATH=$PATH:~/.local/bin"]){
+            sh "make build"
+          }
+        }
       }
       stage('deploy') { 
-          steps {
-          //   when { tag "release-*" }
-            withEnv(["PATH=$PATH:~/.local/bin"]){
-              sh "make serve"
-            }
+        steps {
+        //   when { tag "release-*" }
+          withEnv(["PATH=$PATH:~/.local/bin"]){
+            sh "make serve"
           }
+        }
       }
         
     }
