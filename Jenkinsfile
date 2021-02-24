@@ -6,7 +6,7 @@ pipeline {
         steps {
           withCredentials([file(credentialsId: 'rampdefi-secret', variable: 'secrets')]) {
             sh "echo Copied secrets file from jenkins"
-            sh "cp ${secrets} /truffle/secrets.js"
+            writeFile file: '/truffle/secrets.js', text: readFile(secrets)
             sh "make tests"
           }
         }
