@@ -3,10 +3,12 @@ pipeline {
     agent any
     stages {
       stage('Test') {
-        withCredentials([file(credentialsId: 'rampdefi-secret', variable: 'secrets.js')]) {
+        steps {
+          withCredentials([file(credentialsId: 'rampdefi-secret', variable: 'secrets.js')]) {
             sh "echo \$rampdefi-secret"
             sh "make tests"
           }
+        }
       }
       stage('Build') { 
         steps {
