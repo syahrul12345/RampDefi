@@ -1,0 +1,255 @@
+{
+  "manifestVersion": "3.1",
+  "impls": {
+    "61047150f4843e2a3adc3c5002afac2bdd2cff71a95b0b0f09e93a9b8c26d7ee": {
+      "address": "0x3114b4908A5f6C5EAb281640f5780a7228B9FACA",
+      "txHash": "0x19a0846bacfb9d316800ec8ff48d91cc565968d86667c19886233ff9312175f0",
+      "layout": {
+        "storage": [
+          {
+            "contract": "Initializable",
+            "label": "_initialized",
+            "type": "t_bool",
+            "src": "../@openzeppelin/contracts-upgradeable/proxy/Initializable.sol:25"
+          },
+          {
+            "contract": "Initializable",
+            "label": "_initializing",
+            "type": "t_bool",
+            "src": "../@openzeppelin/contracts-upgradeable/proxy/Initializable.sol:30"
+          },
+          {
+            "contract": "ContextUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)50_storage",
+            "src": "../@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol:31"
+          },
+          {
+            "contract": "OwnableUpgradeable",
+            "label": "_owner",
+            "type": "t_address",
+            "src": "../@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:20"
+          },
+          {
+            "contract": "OwnableUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)49_storage",
+            "src": "../@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:74"
+          },
+          {
+            "contract": "SurveyController",
+            "label": "surveyCount",
+            "type": "t_uint256",
+            "src": "SurveyController.sol:12"
+          },
+          {
+            "contract": "SurveyController",
+            "label": "surveyList",
+            "type": "t_mapping(t_uint256,t_struct(Survey)45_storage)",
+            "src": "SurveyController.sol:13"
+          },
+          {
+            "contract": "SurveyController",
+            "label": "choiceNames",
+            "type": "t_mapping(t_bytes32,t_bytes32)",
+            "src": "SurveyController.sol:14"
+          },
+          {
+            "contract": "SurveyController",
+            "label": "choiceValues",
+            "type": "t_mapping(t_bytes32,t_uint256)",
+            "src": "SurveyController.sol:15"
+          },
+          {
+            "contract": "SurveyController",
+            "label": "choiceExists",
+            "type": "t_mapping(t_bytes32,t_bool)",
+            "src": "SurveyController.sol:16"
+          }
+        ],
+        "types": {
+          "t_uint256": {
+            "label": "uint256"
+          },
+          "t_mapping(t_uint256,t_struct(Survey)45_storage)": {
+            "label": "mapping(uint256 => struct SurveyController.Survey)"
+          },
+          "t_struct(Survey)45_storage": {
+            "label": "struct SurveyController.Survey",
+            "members": [
+              {
+                "label": "name",
+                "type": "t_string_storage"
+              },
+              {
+                "label": "choices",
+                "type": "t_array(t_bytes32)dyn_storage"
+              },
+              {
+                "label": "expiry",
+                "type": "t_uint256"
+              }
+            ]
+          },
+          "t_string_storage": {
+            "label": "string"
+          },
+          "t_array(t_bytes32)dyn_storage": {
+            "label": "bytes32[]"
+          },
+          "t_bytes32": {
+            "label": "bytes32"
+          },
+          "t_mapping(t_bytes32,t_bytes32)": {
+            "label": "mapping(bytes32 => bytes32)"
+          },
+          "t_mapping(t_bytes32,t_uint256)": {
+            "label": "mapping(bytes32 => uint256)"
+          },
+          "t_mapping(t_bytes32,t_bool)": {
+            "label": "mapping(bytes32 => bool)"
+          },
+          "t_bool": {
+            "label": "bool"
+          },
+          "t_address": {
+            "label": "address"
+          },
+          "t_array(t_uint256)49_storage": {
+            "label": "uint256[49]"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]"
+          }
+        }
+      }
+    },
+    "ff3f4451bb9f9b610436dc0fd9878497903bccb74cb67d2fd4f2024438d8bc06": {
+      "address": "0xc2a70aFBbBd50D7dC4A8E1DeEf7ba2c4a09347D2",
+      "txHash": "0x2017d17d6c2d42ae171b8440b90b388d5d3fb058f793a1a1f04a65323133ea2f",
+      "layout": {
+        "storage": [
+          {
+            "contract": "Initializable",
+            "label": "_initialized",
+            "type": "t_bool",
+            "src": "../@openzeppelin/contracts-upgradeable/proxy/Initializable.sol:25"
+          },
+          {
+            "contract": "Initializable",
+            "label": "_initializing",
+            "type": "t_bool",
+            "src": "../@openzeppelin/contracts-upgradeable/proxy/Initializable.sol:30"
+          },
+          {
+            "contract": "ContextUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)50_storage",
+            "src": "../@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol:31"
+          },
+          {
+            "contract": "OwnableUpgradeable",
+            "label": "_owner",
+            "type": "t_address",
+            "src": "../@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:20"
+          },
+          {
+            "contract": "OwnableUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)49_storage",
+            "src": "../@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:74"
+          },
+          {
+            "contract": "SurveyController",
+            "label": "surveyCount",
+            "type": "t_uint256",
+            "src": "SurveyController.sol:12"
+          },
+          {
+            "contract": "SurveyController",
+            "label": "surveyList",
+            "type": "t_mapping(t_uint256,t_struct(Survey)45_storage)",
+            "src": "SurveyController.sol:13"
+          },
+          {
+            "contract": "SurveyController",
+            "label": "choiceNames",
+            "type": "t_mapping(t_bytes32,t_bytes32)",
+            "src": "SurveyController.sol:14"
+          },
+          {
+            "contract": "SurveyController",
+            "label": "choiceValues",
+            "type": "t_mapping(t_bytes32,t_uint256)",
+            "src": "SurveyController.sol:15"
+          },
+          {
+            "contract": "SurveyController",
+            "label": "choiceExists",
+            "type": "t_mapping(t_bytes32,t_bool)",
+            "src": "SurveyController.sol:16"
+          }
+        ],
+        "types": {
+          "t_uint256": {
+            "label": "uint256"
+          },
+          "t_mapping(t_uint256,t_struct(Survey)45_storage)": {
+            "label": "mapping(uint256 => struct SurveyController.Survey)"
+          },
+          "t_struct(Survey)45_storage": {
+            "label": "struct SurveyController.Survey",
+            "members": [
+              {
+                "label": "name",
+                "type": "t_string_storage"
+              },
+              {
+                "label": "choices",
+                "type": "t_array(t_bytes32)dyn_storage"
+              },
+              {
+                "label": "expiry",
+                "type": "t_uint256"
+              }
+            ]
+          },
+          "t_string_storage": {
+            "label": "string"
+          },
+          "t_array(t_bytes32)dyn_storage": {
+            "label": "bytes32[]"
+          },
+          "t_bytes32": {
+            "label": "bytes32"
+          },
+          "t_mapping(t_bytes32,t_bytes32)": {
+            "label": "mapping(bytes32 => bytes32)"
+          },
+          "t_mapping(t_bytes32,t_uint256)": {
+            "label": "mapping(bytes32 => uint256)"
+          },
+          "t_mapping(t_bytes32,t_bool)": {
+            "label": "mapping(bytes32 => bool)"
+          },
+          "t_bool": {
+            "label": "bool"
+          },
+          "t_address": {
+            "label": "address"
+          },
+          "t_array(t_uint256)49_storage": {
+            "label": "uint256[49]"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]"
+          }
+        }
+      }
+    }
+  },
+  "admin": {
+    "address": "0x791192aa111AbDDAa00E075b6611a81f6911536F",
+    "txHash": "0xc7b18742522440e7962d96af76481c9aaeccb1638d58550db55616c7d01f7e11"
+  }
+}
