@@ -1,9 +1,6 @@
 properties([pipelineTriggers([githubPush()])])
 pipeline {
     agent any
-    withCredentials([file(credentialsId: 'rampdefi-secret', variable: 'rampdefi-secret')]) {
-      sh "echo \$rampdefi-secret "
-    }
     stages {
       stage('Test') {
         steps {
@@ -12,8 +9,8 @@ pipeline {
       }
       stage('Build') { 
         steps {
-        //   when { tag "release-*" }
-          withEnv(["PATH=$PATH:~/.local/bin"]){
+         withCredentials([file(credentialsId: 'rampdefi-secret', variable: 'secrets.js')]) {
+            sh "echo \$rampdefi-secret"
             sh "make build"
           }
         }
