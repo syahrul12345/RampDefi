@@ -19,7 +19,7 @@ pipeline {
           steps {
           //   when { tag "release-*" }
             withEnv(["PATH=$PATH:~/.local/bin"]){
-              sh "make up"
+              sh "make serve"
             }
           }
       }
