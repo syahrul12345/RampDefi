@@ -4,8 +4,8 @@ pipeline {
     stages {
       stage('Test') {
         steps {
-          withCredentials([file(credentialsId: 'rampdefi-secret', variable: 'secrets.js')]) {
-            sh "echo $secrets.js"
+          withCredentials([file(credentialsId: 'rampdefi-secret', variable: 'secrets')]) {
+            sh "echo \$secrets"
             sh "make tests"
           }
         }
