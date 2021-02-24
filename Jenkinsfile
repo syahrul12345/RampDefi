@@ -5,7 +5,7 @@ pipeline {
       stage('Test') {
         steps {
           withCredentials([file(credentialsId: 'rampdefi-secret', variable: 'secrets')]) {
-            sh "Copied secrets file from jenkins"
+            sh "echo Copied secrets file from jenkins"
             sh "cp $\secrets /truffle/secrets.js"
             sh "make tests"
           }
